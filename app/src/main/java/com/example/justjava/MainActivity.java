@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
-    private void submitOrder(View view) {
+    public void submitOrder(View view) {
 
         displayMessage(createOrderSummary(calculatePrice()));
     }
@@ -51,19 +51,12 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + numberOfCoffees);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
-
-    private void increment(View view){
+    public void increment(View view){
         quantity++;
         displayQuantity(quantity);
     }
-    private void decrement(View view){
+
+    public void decrement(View view){
         if(quantity>1)
             quantity--;
         displayQuantity(quantity);
@@ -73,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 }
