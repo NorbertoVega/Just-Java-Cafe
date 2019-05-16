@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -26,14 +27,19 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        CheckBox checkBox = findViewById(R.id.whipped_cream_checkbox);
-        boolean hasWhippedCream = checkBox.isChecked();
-        displayMessage(createOrderSummary(calculatePrice(),hasWhippedCream));
+        CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+        EditText editText = findViewById(R.id.name_edit_text);
+        String name = editText.getText().toString();
+        displayMessage(createOrderSummary(calculatePrice(hasWhippedCream,hasChocolate), hasWhippedCream, hasChocolate, name));
     }
 
-    private String createOrderSummary(int price, boolean hasWhippedCream){
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String name){
 
-        return "Name: Norberto Vega\nAdd whipped cream? " + hasWhippedCream + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!!!";
+        return "Name: "+ name + "\nAdd whipped cream? " + hasWhippedCream + "\nAdd chocolate? " +
+                hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!!!";
     }
 
     /**
@@ -41,8 +47,13 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return total price
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean hasWhippedCream,boolean hasChocolate) {
+        int basePrice = 5;
+        if(hasWhippedCream)
+            basePrice++;
+        if(hasChocolate)
+            basePrice+=2;
+        return quantity*basePrice;
     }
 
     /**
