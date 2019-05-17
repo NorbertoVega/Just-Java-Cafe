@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+
 
 /**
  * This app displays an order form to order coffee.
@@ -18,7 +20,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +38,20 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.name_edit_text);
         String name = editText.getText().toString();
         displayMessage(createOrderSummary(calculatePrice(hasWhippedCream,hasChocolate), hasWhippedCream, hasChocolate, name));
-
+        /*
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_SUBJECT,"Just Java order to "+ name);
         intent.putExtra(Intent.EXTRA_TEXT,createOrderSummary(calculatePrice(hasWhippedCream,hasChocolate), hasWhippedCream, hasChocolate, name));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
-        }
+        }*/
     }
 
     private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String name){
 
-        return "Name: "+ name + "\nAdd whipped cream? " + hasWhippedCream + "\nAdd chocolate? " +
-                hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!!!";
+        return getString(R.string.order_summary_name,name) + getString(R.string.add_w_cream,hasWhippedCream) + getString(R.string.add_chocolate,hasChocolate)
+                + getString(R.string.quantity_order_summary,quantity) + getString(R.string.total_order_summary, NumberFormat.getCurrencyInstance().format(price))+ getString(R.string.thank_you);
     }
 
     /**

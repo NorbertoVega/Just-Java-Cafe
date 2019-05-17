@@ -18,12 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:hint="Name"/>
+            android:hint="@string/hint_edit_text"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:textAllCaps="true"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
@@ -32,7 +32,7 @@
             android:id="@+id/whipped_cream_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Whipped cream"
+            android:text="@string/whipped_cream_checkbox"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
             android:paddingLeft="24dp"/>
@@ -41,7 +41,7 @@
             android:id="@+id/chocolate_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chocolate"
+            android:text="@string/chocolate_checkbox"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
             android:paddingLeft="24dp"/>
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantity"
+            android:text="@string/quantity_sign_text_view"
             android:textAllCaps="true"
             android:textSize="16sp"/>
 
@@ -63,14 +63,14 @@
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:text="-"
+                android:text="@string/decrease_button"
                 android:onClick="decrement"/>
 
             <TextView
                 android:id="@+id/quantity_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="@string/quantity_number_text_view"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:layout_marginLeft="8dp"
@@ -79,7 +79,7 @@
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:text="+"
+                android:text="@string/increase_button"
                 android:onClick="increment"/>
 
         </LinearLayout>
@@ -87,7 +87,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="order summary"
+            android:text="@string/order_summary_text_view"
             android:textAllCaps="true"
             android:textSize="16sp"
             />
@@ -96,7 +96,7 @@
             android:id="@+id/order_summary_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$10"
+            android:text="@string/default_price"
             android:textColor="#000000"
             android:textSize="16sp"
             android:layout_marginTop="16dp"/>
@@ -104,7 +104,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="@string/order_button"
             android:textSize="16sp"
             android:layout_marginTop="16dp"
             android:onClick="submitOrder"/>
